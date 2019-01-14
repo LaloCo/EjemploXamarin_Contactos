@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Contactos.ViewModel"
              x:Class="Contactos.View.ContactDetailsPage">
-    <StackLayout Margin="16,20,16,0">
-        <Label x:Name="nameLabel"/>
-        <Label x:Name="lastNameLabel"/>
-        <Label x:Name="emailLabel"/>
-        <Label x:Name="phoneLabel"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:ContactDetailsVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="16,20,16,0"
+                 BindingContext="{StaticResource vm}">
+        <Label Text="{Binding Name}"/>
+        <Label Text="{Binding Lastname}"/>
+        <Label Text="{Binding Email}"/>
+        <Label Text="{Binding Phone}"/>
         <Button Text="Eliminar"
                 TextColor="Red"
                 Margin="0,20,0,0"
-                Clicked="Handle_Clicked"/>
+                Command="{Binding DeleteContactCommand}"/>
     </StackLayout>
 </ContentPage>

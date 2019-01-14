@@ -23,5 +23,7 @@ namespace Contactos.Model
         {
 
         }
+
+
     }
 }
