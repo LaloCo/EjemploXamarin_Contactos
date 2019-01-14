@@ -13,11 +13,6 @@ namespace Contactos.View
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new NewContactPage(), true);
-        }
-
         void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             Contact selectedContact = contactsListView.SelectedItem as Contact;
