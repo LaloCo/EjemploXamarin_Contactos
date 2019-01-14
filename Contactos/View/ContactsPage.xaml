@@ -6,7 +6,13 @@
         <ToolbarItem Text="Nuevo"
                      Clicked="Handle_Clicked"/>
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        
-    </StackLayout>
+    
+    <ListView x:Name="contactsListView">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding FullName}"
+                          Detail="{Binding Email}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

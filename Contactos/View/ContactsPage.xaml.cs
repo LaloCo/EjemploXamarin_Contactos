@@ -25,6 +25,8 @@ namespace Contactos.View
             {
                 conn.CreateTable(typeof(Contact));
                 var contactos = conn.Table<Contact>().ToList();
+
+                contactsListView.ItemsSource = contactos;
             }
         }
     }

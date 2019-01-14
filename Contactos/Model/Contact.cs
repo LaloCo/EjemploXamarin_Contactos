@@ -13,6 +13,12 @@ namespace Contactos.Model
         public string Email { get; set; }
         public string Phone { get; set; }
 
+        private string fullName;
+        public string FullName
+        {
+            get { return $"{Name} {LastName}"; }
+        }
+
         public Contact()
         {
 
