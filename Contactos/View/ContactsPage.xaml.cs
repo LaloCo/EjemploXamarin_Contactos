@@ -39,6 +39,7 @@ namespace Contactos.View
         void EditMenuItem_Handle_Clicked(object sender, System.EventArgs e)
         {
             Contact selectedContact = contactsListView.SelectedItem as Contact;
+            Navigation.PushAsync(new NewContactPage(selectedContact));
         }
 
         protected override void OnAppearing()
