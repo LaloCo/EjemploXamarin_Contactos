@@ -15,6 +15,7 @@
     </ContentPage.ToolbarItems>
     
     <ListView x:Name="contactsListView"
+              ItemsSource="{Binding Source={StaticResource vm}, Path=Contactos}"
               ItemSelected="Handle_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -26,7 +27,8 @@
                                   CommandParameter="{Binding}"/>
                         <MenuItem Text="Borrar"
                                   IsDestructive="true"
-                                  Clicked="DeleteMenuItem_Handle_Clicked"/>
+                                  Command="{Binding Source={StaticResource vm}, Path=DeleteContactCommand}"
+                                  CommandParameter="{Binding}"/>
                     </TextCell.ContextActions>
                 </TextCell>
             </DataTemplate>
