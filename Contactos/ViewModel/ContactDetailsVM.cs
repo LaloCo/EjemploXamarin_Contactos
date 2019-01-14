@@ -79,11 +79,8 @@ namespace Contactos.ViewModel
 
         void DeleteContact(object obj)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
-            {
-                conn.Delete(SelectedContact);
-                App.Current.MainPage.Navigation.PopAsync();
-            }
+            SelectedContact.DeleteContact();
+            App.Current.MainPage.Navigation.PopAsync();
         }
 
         private void OnPropertyChanged(string propertyName)

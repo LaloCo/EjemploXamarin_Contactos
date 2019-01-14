@@ -45,11 +45,8 @@ namespace Contactos.ViewModel
 
         private void BorrarContacto(Contact contacto)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
-            {
-                conn.Delete(contacto);
-                ReadContacts();
-            }
+            contacto.DeleteContact();
+            ReadContacts();
         }
 
         void EditarContacto(Contact contacto)
@@ -59,16 +56,11 @@ namespace Contactos.ViewModel
 
         public void ReadContacts()
         {
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DatabasePath))
+            var contactos = Contact.ReadContacts();
+            Contactos.Clear();
+            foreach (var contacto in contactos)
             {
-                conn.CreateTable(typeof(Contact));
-                var contactos = conn.Table<Contact>().ToList();
-
-                Contactos.Clear();
-                foreach(var contacto in contactos)
-                {
-                    Contactos.Add(contacto);
-                }
+                Contactos.Add(contacto);
             }
         }
 

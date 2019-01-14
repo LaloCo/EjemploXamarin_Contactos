@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SQLite;
 
 namespace Contactos.Model
@@ -24,6 +25,40 @@ namespace Contactos.Model
 
         }
 
+        public static int InsertContact(Contact contact)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Contact>();
+                return conn.Insert(contact);
+            }
+        }
 
+        public int UpdateContact()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Contact>();
+                return conn.Update(this);
+            }
+        }
+
+        public int DeleteContact()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Contact>();
+                return conn.Delete(this);
+            }
+        }
+
+        public static List<Contact> ReadContacts()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Contact>();
+                return conn.Table<Contact>().ToList();
+            }
+        }
     }
 }

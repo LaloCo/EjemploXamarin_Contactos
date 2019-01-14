@@ -101,11 +101,7 @@ namespace Contactos.ViewModel
                     Phone = Phone
                 };
 
-                using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
-                {
-                    conn.CreateTable<Contact>();
-                    filasModificadas = conn.Insert(contact);
-                }
+                filasModificadas = Contact.InsertContact(contact);
             }
             else
             {
@@ -114,11 +110,7 @@ namespace Contactos.ViewModel
                 Contacto.Email = Email;
                 Contacto.Phone = Phone;
 
-                using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
-                {
-                    conn.CreateTable<Contact>();
-                    filasModificadas = conn.Update(Contacto);
-                }
+                filasModificadas = Contacto.UpdateContact();
             }
 
             if (filasModificadas > 0)
