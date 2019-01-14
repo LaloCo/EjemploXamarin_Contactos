@@ -7,5 +7,9 @@
         <Label x:Name="lastNameLabel"/>
         <Label x:Name="emailLabel"/>
         <Label x:Name="phoneLabel"/>
+        <Button Text="Eliminar"
+                TextColor="Red"
+                Margin="0,20,0,0"
+                Clicked="Handle_Clicked"/>
     </StackLayout>
 </ContentPage>
