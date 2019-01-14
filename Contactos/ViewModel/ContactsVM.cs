@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 using Contactos.Model;
 using Contactos.View;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Contactos.ViewModel
 {
-    public class ContactsVM
+    public class ContactsVM : INotifyPropertyChanged
     {
         public NewContactCommand NewContactCommand { get; set; }
 
@@ -18,6 +19,20 @@ namespace Contactos.ViewModel
         public ICommand DeleteContactCommand { get; set; }
 
         public ObservableCollection<Contact> Contactos { get; set; }
+
+        private Contact selectedContact;
+        public Contact SelectedContact
+        {
+            get { return selectedContact; }
+            set
+            {
+                selectedContact = value;
+                OnPropertyChanged("SelectedContact");
+                App.Current.MainPage.Navigation.PushAsync(new ContactDetailsPage(selectedContact));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ContactsVM()
         {
@@ -60,6 +75,11 @@ namespace Contactos.ViewModel
         public void NewContact()
         {
             App.Current.MainPage.Navigation.PushAsync(new NewContactPage(), true);
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

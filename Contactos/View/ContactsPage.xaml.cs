@@ -18,13 +18,6 @@ namespace Contactos.View
             viewModel = Resources["vm"] as ContactsVM;
         }
 
-        void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
-        {
-            Contact selectedContact = contactsListView.SelectedItem as Contact;
-
-            Navigation.PushAsync(new ContactDetailsPage(selectedContact));
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

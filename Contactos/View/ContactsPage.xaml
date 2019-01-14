@@ -15,8 +15,9 @@
     </ContentPage.ToolbarItems>
     
     <ListView x:Name="contactsListView"
-              ItemsSource="{Binding Source={StaticResource vm}, Path=Contactos}"
-              ItemSelected="Handle_ItemSelected">
+              BindingContext="{StaticResource vm}"
+              SelectedItem="{Binding SelectedContact, Mode=TwoWay}"
+              ItemsSource="{Binding Contactos}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding FullName}"
