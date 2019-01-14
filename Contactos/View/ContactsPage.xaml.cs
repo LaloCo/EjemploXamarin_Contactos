@@ -17,6 +17,13 @@ namespace Contactos.View
             Navigation.PushAsync(new NewContactPage(), true);
         }
 
+        void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            Contact selectedContact = contactsListView.SelectedItem as Contact;
+
+            Navigation.PushAsync(new ContactDetailsPage(selectedContact));
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

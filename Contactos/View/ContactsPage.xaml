@@ -7,7 +7,8 @@
                      Clicked="Handle_Clicked"/>
     </ContentPage.ToolbarItems>
     
-    <ListView x:Name="contactsListView">
+    <ListView x:Name="contactsListView"
+              ItemSelected="Handle_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding FullName}"
