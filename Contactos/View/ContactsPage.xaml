@@ -22,7 +22,8 @@
                           Detail="{Binding Email}">
                     <TextCell.ContextActions>
                         <MenuItem Text="Editar"
-                                  Clicked="EditMenuItem_Handle_Clicked"/>
+                                  Command="{Binding Source={StaticResource vm}, Path=EditContactCommand}"
+                                  CommandParameter="{Binding}"/>
                         <MenuItem Text="Borrar"
                                   IsDestructive="true"
                                   Clicked="DeleteMenuItem_Handle_Clicked"/>
