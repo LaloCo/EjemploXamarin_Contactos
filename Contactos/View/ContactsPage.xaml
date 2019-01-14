@@ -12,7 +12,15 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding FullName}"
-                          Detail="{Binding Email}"/>
+                          Detail="{Binding Email}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Editar"
+                                  Clicked="EditMenuItem_Handle_Clicked"/>
+                        <MenuItem Text="Borrar"
+                                  IsDestructive="true"
+                                  Clicked="DeleteMenuItem_Handle_Clicked"/>
+                    </TextCell.ContextActions>
+                </TextCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
